@@ -1,22 +1,22 @@
 import React, {useState} from 'react';
 import './App.css';
-import TodoTable from './components/TodoTable';
+import {TodoTable} from './components/TodoTable';
 import TodoForm from './components/TodoForm';
 
-function App() {
+export const App = () => {
 
   const [showTodoForm,setShowTodoForm] = useState(false);
 
-  const [todos,setTodos] = useState([{rowNo:'1', desc:'Hair cut', assigned:'Kaarthiee'},
-  {rowNo:'2', desc:'Prepare interview', assigned:'Kaarthiee'},
-  {rowNo:'3', desc:'learn react', assigned:'Kaarthiee'},
-  {rowNo:'4', desc:'refresh Java 8', assigned:'Kaarthiee'}
+  const [todos,setTodos] = useState([{rowNo:1, desc:'Hair cut', assigned:'Kaarthiee'},
+  {rowNo:2, desc:'Prepare interview', assigned:'Kaarthiee'},
+  {rowNo:3, desc:'learn react', assigned:'Kaarthiee'},
+  {rowNo:4, desc:'refresh Java 8', assigned:'Kaarthiee'}
 ]);
-const addTodo = (assigned, desc) => {
+const addTodo = (assigned:string, desc:string) => {
   let rowNo=0;
 
   if(todos.length>0){
-    rowNo=Number(todos[todos.length-1].rowNo)+1;
+    rowNo=todos[todos.length-1].rowNo+1;
   } else {
     rowNo=1
   }
@@ -31,7 +31,7 @@ const addTodo = (assigned, desc) => {
   
 }
 
-const deleteTodo = (deleteTodoRowNo) => {
+const deleteTodo = (deleteTodoRowNo:number) => {
   let filtered = todos.filter(function(value){
     return value.rowNo!== deleteTodoRowNo;
   });
@@ -52,5 +52,3 @@ const deleteTodo = (deleteTodoRowNo) => {
     </div>
   );
 }
-
-export default App;
